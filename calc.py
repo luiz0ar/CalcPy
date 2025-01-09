@@ -10,7 +10,7 @@ def selecionarIdioma():
         print("1. Português")
         print("2. English")
         print("3. Español")
-        escolha = input("\n")
+        escolha = input("\n")   
 
         if escolha == '1':
             idioma = 'pt'
@@ -45,12 +45,13 @@ def traduzir(idioma):
             "primeiroNum": "Digite o primeiro número:",
             "segundoNum": "Digite o segundo número:",
             "resultado": "O resultado é:",
-            "resultadoAnterior": "Resultado anterior:",
+            "resultadoAnterior": "Resultados anteriores:",
             "saida": "Saindo...",
             "opcaoInvalida": "Opção inválida! Por favor, escolha uma operação válida.",
             "divisaoImpossivel": "Divisão impossível.",
             "opcaoValida0a5": "Opção inválida! Por favor, escolha uma opção válida entre 0 e 5.",
-            "numValido": "Opção inválida! Por favor, insira um número válido."
+            "numValido": "Opção inválida! Por favor, insira um número válido.",
+            "historico": "Histórico de resultados:"
         }
     elif idioma == 'en':
         return {
@@ -65,12 +66,13 @@ def traduzir(idioma):
             "primeiroNum": "Type the first number:",
             "segundoNum": "Type the second number:",
             "resultado": "The result is:",
-            "resultadoAnterior": "Previous result:",
+            "resultadoAnterior": "Previous results:",
             "saida": "Leaving...",
             "opcaoInvalida": "Invalid Option! Please choose a valid operation.",
             "divisaoImpossivel": "Impossible division.",
             "opcaoValida0a5": "Invalid option! Please choose a valid option between 0 and 5.",
-            "numValido": "Invalid option! Please enter a valid number."
+            "numValido": "Invalid option! Please enter a valid number.",
+            "historico": "History of results:"
         }
     else:
         return {
@@ -85,12 +87,13 @@ def traduzir(idioma):
             "primeiroNum": "Introduce el primer número:",
             "segundoNum": "Introduce el segundo número:",
             "resultado": "El resultado es:",
-            "resultadoAnterior": "Resultado anterior:",
+            "resultadoAnterior": "Resultados anteriores:",
             "saida": "Partida...",
             "opcaoInvalida": "¡Opción no válida! Por favor, elija una operación válida.",
             "divisaoImpossivel": "División imposible.",
             "opcaoValida0a5": "¡Opción no válida! Por favor, elija una opción válida entre 0 y 5.",
-            "numValido": "¡Opción no válida! Por favor, introduce un número válido."
+            "numValido": "¡Opción no válida! Por favor, introduce un número válido.",
+            "historico": "Historial de resultados:"
         }
 
 def somar(x, y):
@@ -134,12 +137,15 @@ def solicitarOpcao(mensagem, mensagens):
 def calcular(idioma):
     while True:
         mensagens = traduzir(idioma)
-        resultadoAnterior = None
+        resultados = []  # Lista para armazenar os resultados temporariamente
         
         while True:
-            if resultadoAnterior is not None:
-                print(f"\n{mensagens['resultadoAnterior']} {resultadoAnterior}")
-                
+            # Exibe todos os resultados anteriores no idioma atual
+            if resultados:
+                print(f"\n{mensagens['resultadoAnterior']}")
+                for res in resultados:
+                    print(res)
+
             escolha = solicitarOpcao(mensagens["opcao"], mensagens)
 
             if escolha == '0':
@@ -154,28 +160,32 @@ def calcular(idioma):
                 num2 = solicitarNum(mensagens["segundoNum"])
 
                 if escolha == '1':
-                    resultadoAnterior = somar(num1, num2)
+                    resultado = somar(num1, num2)
+                    resultados.append(f"{num1} + {num2} = {resultado}")
                     limparTela()
-                    print(f"\n{mensagens['resultado']} {resultadoAnterior}")
+                    print(f"\n{mensagens['resultado']} {resultado}")
                 elif escolha == '2':
-                    resultadoAnterior = subtrair(num1, num2)
+                    resultado = subtrair(num1, num2)
+                    resultados.append(f"{num1} - {num2} = {resultado}")
                     limparTela()
-                    print(f"\n{mensagens['resultado']} {resultadoAnterior}")
+                    print(f"\n{mensagens['resultado']} {resultado}")
                 elif escolha == '3':
-                    resultadoAnterior = multiplicar(num1, num2)
+                    resultado = multiplicar(num1, num2)
+                    resultados.append(f"{num1} * {num2} = {resultado}")
                     limparTela()
-                    print(f"\n{mensagens['resultado']} {resultadoAnterior}")
+                    print(f"\n{mensagens['resultado']} {resultado}")
                 elif escolha == '4':
-                    resultadoAnterior = dividir(num1, num2)
-                    limparTela()
-                    if resultadoAnterior is None:
+                    resultado = dividir(num1, num2)
+                    if resultado is None:
+                        resultados.append(f"{num1} / {num2} = {mensagens['divisaoImpossivel']}")
+                        limparTela()
                         print(f"\n{mensagens['divisaoImpossivel']}")
                     else:
-                        print(f"\n{mensagens['resultado']} {resultadoAnterior}")
+                        resultados.append(f"{num1} / {num2} = {resultado}")
+                        limparTela()
+                        print(f"\n{mensagens['resultado']} {resultado}")
                 else:
                     print(mensagens["opcaoInvalida"])
-
-
 
 if __name__ == "__main__":
     idioma = selecionarIdioma()
