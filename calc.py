@@ -9,7 +9,7 @@ def multiplicar(x, y):
 
 def dividir(x, y):
     if y == 0:
-        return "Erro! Divisão por zero."
+        return "Divisão não possível."
     return x / y
 
 def calcular():
@@ -19,11 +19,11 @@ def calcular():
         print("2. Subtrair")
         print("3. Multiplicar")
         print("4. Dividir")
-        print("5. Sair")
+        print("0. Sair")
         
-        escolha = input("Digite o número da operação desejada: ")
+        escolha = input("Escolha uma operação matemáica: ")
 
-        if escolha == '5':
+        if escolha == '0':
             print("Saindo...")
             break
 
@@ -31,13 +31,13 @@ def calcular():
         num2 = float(input("Digite o segundo número: "))
 
         if escolha == '1':
-            print(f"O resultado de {num1} + {num2} é: {somar(num1, num2)}")
+            print(f"O resultado é: {somar(num1, num2)}")
         elif escolha == '2':
-            print(f"O resultado de {num1} - {num2} é: {subtrair(num1, num2)}")
+            print(f"O resultado é: {subtrair(num1, num2)}")
         elif escolha == '3':
-            print(f"O resultado de {num1} * {num2} é: {multiplicar(num1, num2)}")
+            print(f"O resultadoé: {multiplicar(num1, num2)}")
         elif escolha == '4':
-            print(f"O resultado de {num1} / {num2} é: {dividir(num1, num2)}")
+            print(f"O resultado é: {dividir(num1, num2)}")
         else:
             print("Opção inválida! Por favor, escolha uma operação válida.")
 
