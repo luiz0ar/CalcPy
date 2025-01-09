@@ -1,3 +1,50 @@
+def selecionar_idioma():
+    while True:
+        print("\nCALCULATOR")
+        print("Escolha o idioma / Choose the language:")
+        print("1. Português")
+        print("2. English")
+        escolha = input("")
+
+        if escolha == '1':
+            return 'pt'
+        elif escolha == '2':
+            return 'en'
+        else:
+            print("Opção inválida! Tente novamente. / Invalid option! Try again.")
+
+def traduzir(idioma):
+    if idioma == 'pt':
+        return {
+            "menu": "\nEscolha uma operação:",
+            "somar": "1. Somar",
+            "subtrair": "2. Subtrair",
+            "multiplicar": "3. Multiplicar",
+            "dividir": "4. Dividir",
+            "sair": "0. Sair",
+            "opcao": "Escolha uma opção:",
+            "primeiroNum": "Digite o primeiro número:",
+            "segundoNum": "Digite o segundo número:",
+            "resultado": "O resultado é:",
+            "saida": "Adeus...",
+            "opcaoInvalida": "Opção inválida! Por favor, escolha uma operação válida."
+        }
+    else:
+        return {
+            "menu": "\nChoose a mathematical operation:",
+            "somar": "1. Addition",
+            "subtrair": "2. Subtract",
+            "multiplicar": "3. Multiplication",
+            "dividir": "4. Division",
+            "sair": "0. Exit",
+            "opcao": "Choose an option:",
+            "primeiroNum": "Type the first number:",
+            "segundoNum": "Type the second number:",
+            "resultado": "The result is:",
+            "saida": "Bye...",
+            "opcaoInvalida": "Please choose a valid operation."
+        }
+
 def somar(x, y):
     return x + y
 
@@ -9,37 +56,40 @@ def multiplicar(x, y):
 
 def dividir(x, y):
     if y == 0:
-        return "Divisão não possível."
+        return "Division not possible."
     return x / y
 
-def calcular():
+def calcular(idioma):
+    mensagens = traduzir(idioma)
+    
     while True:
-        print("\nEscolha uma operação:")
-        print("1. Somar")
-        print("2. Subtrair")
-        print("3. Multiplicar")
-        print("4. Dividir")
-        print("0. Sair")
-        
-        escolha = input("Escolha uma operação matemáica: ")
+        print(mensagens["menu"])
+        print(mensagens["somar"])
+        print(mensagens["subtrair"])
+        print(mensagens["multiplicar"])
+        print(mensagens["dividir"])
+        print(mensagens["sair"])
+
+        escolha = input(mensagens["opcao"])
 
         if escolha == '0':
-            print("Adeus...")
+            print(mensagens["saida"])
             break
 
-        num1 = float(input("Digite o primeiro número: "))
-        num2 = float(input("Digite o segundo número: "))
+        num1 = float(input(mensagens["primeiroNum"]))
+        num2 = float(input(mensagens["segundoNum"]))
 
         if escolha == '1':
-            print(f"\nO resultado é: {somar(num1, num2)}")
+            print(f"{mensagens['resultado']} {somar(num1, num2)}")
         elif escolha == '2':
-            print(f"\nO resultado é: {subtrair(num1, num2)}")
+            print(f"{mensagens['resultado']} {subtrair(num1, num2)}")
         elif escolha == '3':
-            print(f"\nO resultadoé: {multiplicar(num1, num2)}")
+            print(f"{mensagens['resultado']} {multiplicar(num1, num2)}")
         elif escolha == '4':
-            print(f"\nO resultado é: {dividir(num1, num2)}")
+            print(f"{mensagens['resultado']} {dividir(num1, num2)}")
         else:
-            print("Opção inválida! Por favor, escolha uma operação válida.")
+            print(mensagens["opcaoInvalida"])
 
 if __name__ == "__main__":
-    calcular()
+    idioma = selecionar_idioma()
+    calcular(idioma)
