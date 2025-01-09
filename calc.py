@@ -24,20 +24,20 @@ def calcular():
         escolha = input("Escolha uma operação matemáica: ")
 
         if escolha == '0':
-            print("Saindo...")
+            print("Adeus...")
             break
 
         num1 = float(input("Digite o primeiro número: "))
         num2 = float(input("Digite o segundo número: "))
 
         if escolha == '1':
-            print(f"O resultado é: {somar(num1, num2)}")
+            print(f"\nO resultado é: {somar(num1, num2)}")
         elif escolha == '2':
-            print(f"O resultado é: {subtrair(num1, num2)}")
+            print(f"\nO resultado é: {subtrair(num1, num2)}")
         elif escolha == '3':
-            print(f"O resultadoé: {multiplicar(num1, num2)}")
+            print(f"\nO resultadoé: {multiplicar(num1, num2)}")
         elif escolha == '4':
-            print(f"O resultado é: {dividir(num1, num2)}")
+            print(f"\nO resultado é: {dividir(num1, num2)}")
         else:
             print("Opção inválida! Por favor, escolha uma operação válida.")
 
