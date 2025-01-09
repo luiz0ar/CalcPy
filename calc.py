@@ -15,18 +15,21 @@ def selecionarIdioma():
         if escolha == '1':
             idioma = 'pt'
             limparTela()
+            print("Bem-vindo à Calculadora!")
             return idioma
         elif escolha == '2':
             idioma = 'en'
             limparTela()
+            print("Welcome to the Calculator!")
             return idioma
         elif escolha == '3':
             idioma = 'es'
             limparTela()
+            print("¡Bienvenido a la Calculadora!")
             return idioma
         else:
             limparTela()
-            print("Opção inválida! Tente novamente. / Invalid option! Try again.")
+            print("Opção inválida! Tente novamente. / Invalid option! Try again. / ¡Opción no válida! Intenta nuevamente.")
 
 def traduzir(idioma):
     if idioma == 'pt':
@@ -46,8 +49,8 @@ def traduzir(idioma):
             "saida": "Saindo...",
             "opcaoInvalida": "Opção inválida! Por favor, escolha uma operação válida.",
             "divisaoImpossivel": "Divisão impossível.",
-            "erroNumero": "Erro: Por favor, insira um número válido.",
-            "erroOpcao": "Erro: Por favor, escolha uma opção válida de 0 a 5."
+            "opcaoValida0a5": "Opção inválida! Por favor, escolha uma opção válida entre 0 e 5.",
+            "numValido": "Opção inválida! Por favor, insira um número válido."
         }
     elif idioma == 'en':
         return {
@@ -66,8 +69,8 @@ def traduzir(idioma):
             "saida": "Leaving...",
             "opcaoInvalida": "Invalid Option! Please choose a valid operation.",
             "divisaoImpossivel": "Impossible division.",
-            "erroNumero": "Error: Please enter a valid number.",
-            "erroOpcao": "Error: Please choose a valid option from 0 to 5."
+            "opcaoValida0a5": "Invalid option! Please choose a valid option between 0 and 5.",
+            "numValido": "Invalid option! Please enter a valid number."
         }
     else:
         return {
@@ -86,8 +89,8 @@ def traduzir(idioma):
             "saida": "Partida...",
             "opcaoInvalida": "¡Opción no válida! Por favor, elija una operación válida.",
             "divisaoImpossivel": "División imposible.",
-            "erroNumero": "Error: Por favor, ingrese un número válido.",
-            "erroOpcao": "Error: Por favor, elija una opción válida de 0 a 5."
+            "opcaoValida0a5": "¡Opción no válida! Por favor, elija una opción válida entre 0 y 5.",
+            "numValido": "¡Opción no válida! Por favor, introduce un número válido."
         }
 
 def somar(x, y):
@@ -109,15 +112,24 @@ def solicitarNum(mensagem):
         try:
             return float(input(mensagem))
         except ValueError:
-            print(mensagem)  # Mensagem de erro no idioma selecionado
+             print(traduzir(idioma)["numValido"])
 
-def solicitarOpcao(mensagem):
+def solicitarOpcao(mensagem, mensagens):
     while True:
+        print(mensagens["somar"])
+        print(mensagens["subtrair"])
+        print(mensagens["multiplicar"])
+        print(mensagens["dividir"])
+        print(mensagens["voltar"])
+        print(mensagens["sair"])
+
         opcao = input(mensagem)
-        if opcao.isdigit() and opcao in ['0', '1', '2', '3', '4', '5']:
+        
+        if opcao.isdigit() and 0 <= int(opcao) <= 5:
             return opcao
         else:
-            print(mensagem)  # Mensagem de erro no idioma selecionado
+            limparTela()
+            print(mensagens["opcaoValida0a5"])
 
 def calcular(idioma):
     mensagens = traduzir(idioma)
@@ -126,16 +138,7 @@ def calcular(idioma):
     while True:
         if resultadoAnterior is not None:
             print(f"\n{mensagens['resultadoAnterior']} {resultadoAnterior}")
-        print(mensagens["menu"])
-        print(mensagens["somar"])
-        print(mensagens["subtrair"])
-        print(mensagens["multiplicar"])
-        print(mensagens["dividir"])
-        print(mensagens["voltar"])
-        print("")
-        print(mensagens["sair"])
-
-        escolha = solicitarOpcao(mensagens["opcao"])
+        escolha = solicitarOpcao(mensagens["opcao"], mensagens)
 
         if escolha == '0':
             print(mensagens["saida"])
@@ -168,6 +171,7 @@ def calcular(idioma):
                     print(f"\n{mensagens['resultado']} {resultadoAnterior}")
             else:
                 print(mensagens["opcaoInvalida"])
+
 
 if __name__ == "__main__":
     idioma = selecionarIdioma()
