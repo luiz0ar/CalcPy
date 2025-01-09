@@ -6,9 +6,10 @@ def limparTela():
 def selecionarIdioma():
     while True:
         print("\nCALCULATOR")
-        print("Escolha o idioma / Choose the language:")
+        print("Escolha o idioma / Choose the language / Elegir idioma:")
         print("1. Português")
         print("2. English")
+        print("3. Español") 
         escolha = input("\n")
 
         if escolha == '1':
@@ -17,6 +18,10 @@ def selecionarIdioma():
             return idioma
         elif escolha == '2':
             idioma = 'en'
+            limparTela()
+            return idioma
+        if escolha == '3':
+            idioma = 'es'
             limparTela()
             return idioma
         else:
@@ -40,7 +45,7 @@ def traduzir(idioma):
             "saida": "Adeus...",
             "opcaoInvalida": "Opção inválida! Por favor, escolha uma operação válida."
         }
-    else:
+    elif idioma == 'en':
         return {
             "menu": "Choose a mathematical operation:",
             "somar": "1. Addition",
@@ -56,7 +61,22 @@ def traduzir(idioma):
             "saida": "Bye...",
             "opcaoInvalida": "Please choose a valid operation."
         }
-
+    else:
+        return{
+            "menu": "Elige una operación:",
+            "somar": "1. Sumar",
+            "subtrair": "2. Restar",
+            "multiplicar": "3. Multiplicar",
+            "dividir": "4. Dividir  ",
+            "sair": "0. Salir",
+            "opcao": "Elige una opción:",
+            "primeiroNum": "Introduce el primer número:",
+            "segundoNum": "Introduce el segundo número:",
+            "resultado": "El resultado es::",
+            "resultadoAnterior": "Resultado anterior:",
+            "saida": "Adiós...",
+            "opcaoInvalida": "¡Opción no válida! Por favor, elija una operación válida"
+        }
 def somar(x, y):
     return x + y
 
