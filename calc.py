@@ -3,7 +3,7 @@ import os
 def limparTela():
     os.system('cls')
 
-def selecionar_idioma():
+def selecionarIdioma():
     while True:
         print("\nCALCULATOR")
         print("Escolha o idioma / Choose the language:")
@@ -71,7 +71,7 @@ def dividir(x, y):
         return "Division not possible."
     return x / y
 
-def solicitar_numero(mensagem):
+def solicitarNum(mensagem):
     while True:
         try:
             return float(input(mensagem))
@@ -106,8 +106,8 @@ def calcular(idioma):
             print(mensagens["saida"])
             break
         
-        num1 = solicitar_numero(mensagens["primeiroNum"])
-        num2 = solicitar_numero(mensagens["segundoNum"])
+        num1 = solicitarNum(mensagens["primeiroNum"])
+        num2 = solicitarNum(mensagens["segundoNum"])
 
         if escolha == '1':
             resultadoAnterior = somar(num1, num2)
@@ -125,5 +125,5 @@ def calcular(idioma):
             print(mensagens["opcaoInvalida"])
 
 if __name__ == "__main__":
-    idioma = selecionar_idioma()
+    idioma = selecionarIdioma()
     calcular(idioma)
