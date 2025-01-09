@@ -84,7 +84,7 @@ def solicitarOpcao(mensagem):
         if opcao.isdigit():
             return opcao
         else:
-            limparTela()
+            
             print("Erro: Por favor, escolha uma opção válida.")
 
 def calcular(idioma):
@@ -92,7 +92,8 @@ def calcular(idioma):
     resultadoAnterior = None
 
     while True:
-        print(f"\n{mensagens['resultadoAnterior']} {resultadoAnterior}")
+        if resultadoAnterior is not None:
+            print(f"\n{mensagens['resultadoAnterior']} {resultadoAnterior}")
         print(mensagens["menu"])
         print(mensagens["somar"])
         print(mensagens["subtrair"])
@@ -111,16 +112,16 @@ def calcular(idioma):
 
         if escolha == '1':
             resultadoAnterior = somar(num1, num2)
-            print(f"{mensagens['resultado']} {resultadoAnterior}")
+            print(f"\n{mensagens['resultado']} {resultadoAnterior}")
         elif escolha == '2':
             resultadoAnterior = subtrair(num1, num2)
-            print(f"{mensagens['resultado']} {resultadoAnterior}")
+            print(f"\n{mensagens['resultado']} {resultadoAnterior}")
         elif escolha == '3':
             resultadoAnterior = multiplicar(num1, num2)
-            print(f"{mensagens['resultado']} {resultadoAnterior}")
+            print(f"\n{mensagens['resultado']} {resultadoAnterior}")
         elif escolha == '4':
             resultadoAnterior = dividir(num1, num2)
-            print(f"{mensagens['resultado']} {resultadoAnterior}")
+            print(f"\n{mensagens['resultado']} {resultadoAnterior}")
         else:
             print(mensagens["opcaoInvalida"])
 
