@@ -137,10 +137,9 @@ def solicitarOpcao(mensagem, mensagens):
 def calcular(idioma):
     while True:
         mensagens = traduzir(idioma)
-        resultados = []  # Lista para armazenar os resultados temporariamente
+        resultados = []
         
         while True:
-            # Exibe todos os resultados anteriores no idioma atual
             if resultados:
                 print(f"\n{mensagens['resultadoAnterior']}")
                 for res in resultados:
