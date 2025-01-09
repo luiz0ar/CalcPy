@@ -139,8 +139,7 @@ def calcular(idioma):
         while True:
             if resultadoAnterior is not None:
                 print(f"\n{mensagens['resultadoAnterior']} {resultadoAnterior}")
-            
-            # Exibe as opções
+                
             escolha = solicitarOpcao(mensagens["opcao"], mensagens)
 
             if escolha == '0':
