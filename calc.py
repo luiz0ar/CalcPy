@@ -145,12 +145,11 @@ def calcular(idioma):
 
             if escolha == '0':
                 print(mensagens["saida"])
-                return  # Sai do programa
+                return
             elif escolha == '5':
                 limparTela()
-                # Quando o usuário escolhe '5' (Voltar), retorna ao menu de seleção de idioma
                 idioma = selecionarIdioma()
-                break  # Sai do loop interno de operações e volta para a seleção de idioma
+                break
             else:
                 num1 = solicitarNum(mensagens["primeiroNum"])
                 num2 = solicitarNum(mensagens["segundoNum"])
