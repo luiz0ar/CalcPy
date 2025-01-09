@@ -1,5 +1,8 @@
 import os
 
+def limpar_tela():
+        os.system('cls')
+
 def selecionar_idioma():
     while True:
         print("\nCALCULATOR")
@@ -18,9 +21,6 @@ def selecionar_idioma():
             return idioma
         else:
             print("Opção inválida! Tente novamente. / Invalid option! Try again.")
-
-def limpar_tela():
-        os.system('cls')
 
 def traduzir(idioma):
     if idioma == 'pt':
@@ -87,7 +87,7 @@ def calcular(idioma):
 
         num1 = float(input(mensagens["primeiroNum"]))
         num2 = float(input(mensagens["segundoNum"]))
-
+        
         if escolha == '1':
             print(f"{mensagens['resultado']} {somar(num1, num2)}")
         elif escolha == '2':
