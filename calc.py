@@ -132,45 +132,51 @@ def solicitarOpcao(mensagem, mensagens):
             print(mensagens["opcaoValida0a5"])
 
 def calcular(idioma):
-    mensagens = traduzir(idioma)
-    resultadoAnterior = None
-
     while True:
-        if resultadoAnterior is not None:
-            print(f"\n{mensagens['resultadoAnterior']} {resultadoAnterior}")
-        escolha = solicitarOpcao(mensagens["opcao"], mensagens)
+        mensagens = traduzir(idioma)
+        resultadoAnterior = None
+        
+        while True:
+            if resultadoAnterior is not None:
+                print(f"\n{mensagens['resultadoAnterior']} {resultadoAnterior}")
+            
+            # Exibe as opções
+            escolha = solicitarOpcao(mensagens["opcao"], mensagens)
 
-        if escolha == '0':
-            print(mensagens["saida"])
-            break
-        elif escolha == '5':
-            limparTela()
-            continue
-        else:
-            num1 = solicitarNum(mensagens["primeiroNum"])
-            num2 = solicitarNum(mensagens["segundoNum"])
-
-            if escolha == '1':
-                resultadoAnterior = somar(num1, num2)
+            if escolha == '0':
+                print(mensagens["saida"])
+                return  # Sai do programa
+            elif escolha == '5':
                 limparTela()
-                print(f"\n{mensagens['resultado']} {resultadoAnterior}")
-            elif escolha == '2':
-                resultadoAnterior = subtrair(num1, num2)
-                limparTela()
-                print(f"\n{mensagens['resultado']} {resultadoAnterior}")
-            elif escolha == '3':
-                resultadoAnterior = multiplicar(num1, num2)
-                limparTela()
-                print(f"\n{mensagens['resultado']} {resultadoAnterior}")
-            elif escolha == '4':
-                resultadoAnterior = dividir(num1, num2)
-                limparTela()
-                if resultadoAnterior is None:
-                    print(f"\n{mensagens['divisaoImpossivel']}")
-                else:
-                    print(f"\n{mensagens['resultado']} {resultadoAnterior}")
+                # Quando o usuário escolhe '5' (Voltar), retorna ao menu de seleção de idioma
+                idioma = selecionarIdioma()
+                break  # Sai do loop interno de operações e volta para a seleção de idioma
             else:
-                print(mensagens["opcaoInvalida"])
+                num1 = solicitarNum(mensagens["primeiroNum"])
+                num2 = solicitarNum(mensagens["segundoNum"])
+
+                if escolha == '1':
+                    resultadoAnterior = somar(num1, num2)
+                    limparTela()
+                    print(f"\n{mensagens['resultado']} {resultadoAnterior}")
+                elif escolha == '2':
+                    resultadoAnterior = subtrair(num1, num2)
+                    limparTela()
+                    print(f"\n{mensagens['resultado']} {resultadoAnterior}")
+                elif escolha == '3':
+                    resultadoAnterior = multiplicar(num1, num2)
+                    limparTela()
+                    print(f"\n{mensagens['resultado']} {resultadoAnterior}")
+                elif escolha == '4':
+                    resultadoAnterior = dividir(num1, num2)
+                    limparTela()
+                    if resultadoAnterior is None:
+                        print(f"\n{mensagens['divisaoImpossivel']}")
+                    else:
+                        print(f"\n{mensagens['resultado']} {resultadoAnterior}")
+                else:
+                    print(mensagens["opcaoInvalida"])
+
 
 
 if __name__ == "__main__":
