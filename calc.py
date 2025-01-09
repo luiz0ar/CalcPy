@@ -1,7 +1,7 @@
 import os
 
 def limparTela():
-    os.system('cls')
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def selecionarIdioma():
     while True:
@@ -136,15 +136,19 @@ def calcular(idioma):
 
         if escolha == '1':
             resultadoAnterior = somar(num1, num2)
+            limparTela()
             print(f"\n{mensagens['resultado']} {resultadoAnterior}")
         elif escolha == '2':
             resultadoAnterior = subtrair(num1, num2)
+            limparTela()
             print(f"\n{mensagens['resultado']} {resultadoAnterior}")
         elif escolha == '3':
             resultadoAnterior = multiplicar(num1, num2)
+            limparTela()
             print(f"\n{mensagens['resultado']} {resultadoAnterior}")
         elif escolha == '4':
             resultadoAnterior = dividir(num1, num2)
+            limparTela()
             if resultadoAnterior is None:
                 print(f"\n{mensagens['divisaoImpossivel']}")
             else:
