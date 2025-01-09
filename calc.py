@@ -1,6 +1,6 @@
 import os
 
-def limpar_tela():
+def limparTela():
     os.system('cls')
 
 def selecionar_idioma():
@@ -13,13 +13,14 @@ def selecionar_idioma():
 
         if escolha == '1':
             idioma = 'pt'
-            limpar_tela()
+            limparTela()
             return idioma
         elif escolha == '2':
             idioma = 'en'
-            limpar_tela()
+            limparTela()
             return idioma
         else:
+            limparTela()
             print("Opção inválida! Tente novamente. / Invalid option! Try again.")
 
 def traduzir(idioma):
@@ -77,12 +78,13 @@ def solicitar_numero(mensagem):
         except ValueError:
             print("Erro: Por favor, insira um número válido.")
 
-def solicitar_opcao(mensagem):
+def solicitarOpcao(mensagem):
     while True:
         opcao = input(mensagem)
         if opcao.isdigit():
             return opcao
         else:
+            limparTela()
             print("Erro: Por favor, escolha uma opção válida.")
 
 def calcular(idioma):
@@ -98,7 +100,7 @@ def calcular(idioma):
         print(mensagens["dividir"])
         print(mensagens["sair"])
 
-        escolha = solicitar_opcao(mensagens["opcao"])
+        escolha = solicitarOpcao(mensagens["opcao"])
     
         if escolha == '0':
             print(mensagens["saida"])
