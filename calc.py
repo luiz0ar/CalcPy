@@ -1,17 +1,26 @@
+import os
+
 def selecionar_idioma():
     while True:
         print("\nCALCULATOR")
         print("Escolha o idioma / Choose the language:")
         print("1. Português")
         print("2. English")
-        escolha = input("")
+        escolha = input("\n")
 
         if escolha == '1':
-            return 'pt'
+            idioma = 'pt'
+            limpar_tela()
+            return idioma
         elif escolha == '2':
-            return 'en'
+            idioma = 'en'
+            limpar_tela()
+            return idioma
         else:
             print("Opção inválida! Tente novamente. / Invalid option! Try again.")
+
+def limpar_tela():
+        os.system('cls')
 
 def traduzir(idioma):
     if idioma == 'pt':
