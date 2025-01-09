@@ -43,7 +43,8 @@ def traduzir(idioma):
             "resultado": "O resultado é:",
             "resultadoAnterior": "Resultado anterior:",
             "saida": "Adeus...",
-            "opcaoInvalida": "Opção inválida! Por favor, escolha uma operação válida."
+            "opcaoInvalida": "Opção inválida! Por favor, escolha uma operação válida.",
+            "divisaoImpossivel": "Divisão impossível."
         }
     elif idioma == 'en':
         return {
@@ -59,7 +60,8 @@ def traduzir(idioma):
             "resultado": "The result is:",
             "resultadoAnterior": "Previous result:",
             "saida": "Bye...",
-            "opcaoInvalida": "Please choose a valid operation."
+            "opcaoInvalida": "Please choose a valid operation.",
+            "divisaoImpossivel": "Impossible division."
         }
     else:
         return{
@@ -75,7 +77,8 @@ def traduzir(idioma):
             "resultado": "El resultado es::",
             "resultadoAnterior": "Resultado anterior:",
             "saida": "Adiós...",
-            "opcaoInvalida": "¡Opción no válida! Por favor, elija una operación válida"
+            "opcaoInvalida": "¡Opción no válida! Por favor, elija una operación válida",
+            "divisaoImpossivel": "División imposible."
         }
 def somar(x, y):
     return x + y
@@ -88,8 +91,9 @@ def multiplicar(x, y):
 
 def dividir(x, y):
     if y == 0:
-        return "Division not possible."
+        return None
     return x / y
+
 
 def solicitarNum(mensagem):
     while True:
@@ -122,7 +126,7 @@ def calcular(idioma):
         print(mensagens["sair"])
 
         escolha = solicitarOpcao(mensagens["opcao"])
-    
+
         if escolha == '0':
             print(mensagens["saida"])
             break
@@ -141,7 +145,10 @@ def calcular(idioma):
             print(f"\n{mensagens['resultado']} {resultadoAnterior}")
         elif escolha == '4':
             resultadoAnterior = dividir(num1, num2)
-            print(f"\n{mensagens['resultado']} {resultadoAnterior}")
+            if resultadoAnterior is None:
+                print(f"\n{mensagens['divisaoImpossivel']}")
+            else:
+                print(f"\n{mensagens['resultado']} {resultadoAnterior}")
         else:
             print(mensagens["opcaoInvalida"])
 
